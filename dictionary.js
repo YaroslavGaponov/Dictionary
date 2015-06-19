@@ -154,6 +154,10 @@ BigArray.prototype.forEach = function(cb) {
     }
 }
 
+BigArray.prototype.length = function() {
+    return this._index - this._freeIndex.length;
+}
+
 var Dictionary = module.exports = function() {
     this._index = new BinaryTree();
     this._storage = new BigArray();
@@ -195,4 +199,8 @@ Dictionary.prototype.get = function (indx) {
 
 Dictionary.prototype.forEach = function(cb) {
     this._storage.forEach(cb);
+}
+
+Dictionary.prototype.length = function () {
+    return this._storage.length();
 }
